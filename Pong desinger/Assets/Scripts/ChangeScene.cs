@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class SceneChange : MonoBehaviour
+public class ChangeScene : MonoBehaviour
 {
     public string NextScene = "MainLevel";
-    public void ChangeScene()
+    public void changeScene()
     {
         SceneManager.LoadScene(NextScene);
     }

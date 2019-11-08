@@ -8,6 +8,8 @@ public class PaddleMovement : MonoBehaviour
     public Rigidbody2D rb;
     public KeyCode upKey;
     public KeyCode downKey;
+    public float topWall;
+    public float bottomWall;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +31,12 @@ public class PaddleMovement : MonoBehaviour
             //if only up key is down, move the paddle up
             else if (Input.GetKey(upKey))
             {
-                rb.velocity = new Vector2(speed, 0);
+                rb.velocity = new Vector2(0, speed);
             }
             //if only down key is down, move paddle down
             else if (Input.GetKey(downKey))
             {
-                rb.velocity = new Vector2(-speed, 0);
+                rb.velocity = new Vector2(0, -speed);
             }
             //if neither key is down, dont move paddle
             else
@@ -43,12 +45,12 @@ public class PaddleMovement : MonoBehaviour
             }
         }
         //if paddle is at the bottom wall, stop it from going farther down
-        if(rb.position.y < -5 && Input.GetKey(downKey))
+        if(rb.position.y < bottomWall && Input.GetKey(downKey))
         {
             rb.velocity = new Vector2(0, 0);
         }
         //if paddle is at the top wall, stop it from going farther up
-        if(rb.position.x > 5 && Input.GetKey(upKey))
+        if(rb.position.y > topWall && Input.GetKey(upKey))
         {
             rb.velocity = new Vector2(0, 0);
         }
