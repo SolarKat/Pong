@@ -16,17 +16,13 @@ public class ParticlesOnCollide : MonoBehaviour
     {
         
     }
-    
-    void OnCollisionEnter(Collision coll)
+
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.collider.CompareTag("Player"))
+        if (coll.collider.CompareTag("solid"))
         {
-            Explode();
+            GameObject firework = Instantiate(FireworksAll, coll.contacts[0].point, Quaternion.identity);
+            firework.GetComponent<ParticleSystem>().Play();
         }
-    }
-    void Explode()
-    {
-        GameObject firework = Instantiate(FireworksAll, transform.position, Quaternion.identity);
-        firework.GetComponent<ParticleSystem>().Play();
     }
 }

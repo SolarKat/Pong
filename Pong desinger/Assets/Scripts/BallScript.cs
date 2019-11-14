@@ -8,6 +8,8 @@ public class BallScript : MonoBehaviour
     public Rigidbody2D rb;
     public int speed = 5;
     Vector2 direction = new Vector2(1,1);
+    public ChangeScene sceneChange;
+    public ShakeScreen shake;
     public GameObject goal1;
     public GameObject goal2;
     int score1;
@@ -15,6 +17,7 @@ public class BallScript : MonoBehaviour
     public Text txt1;
     public Text txt2;
     bool reset;
+    public int scoreToWin = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +45,11 @@ public class BallScript : MonoBehaviour
 
     public void resetPosition()
     {
+        if(score1 == scoreToWin || score2 == scoreToWin)
+        {
+            resetScores();
+            sceneChange.changeScene();
+        }
         reset = true;
         rb.velocity = new Vector2(0, 0);
         rb = GetComponent<Rigidbody2D>();
@@ -55,15 +63,29 @@ public class BallScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject == goal1)
+        if (collision.gameObject == goal1)
         {
             score2++;
             resetPosition();
         }
-        else if(collision.gameObject == goal2)
+        else if (collision.gameObject == goal2)
         {
             score1++;
             resetPosition();
+        }
+        else if (collision.gameObject.layer == 8)
+        {
+            shake.shake();
+        }
+
+        var cubeRenderer = gameObject.GetComponent<Renderer>();
+        if (collision.gameObject.name == "paddle1")
+        {
+            cubeRenderer.material.SetColor("_Color", Color.red);
+        }
+        else if (collision.gameObject.name == "paddle2")
+        {
+            cubeRenderer.material.SetColor("_Color", Color.blue);
         }
     }
 
