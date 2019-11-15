@@ -53,7 +53,9 @@ public class BallScript : MonoBehaviour
         reset = true;
         rb.velocity = new Vector2(0, 0);
         rb = GetComponent<Rigidbody2D>();
-        rb.transform.position = new Vector2(0, 0);   
+        rb.transform.position = new Vector2(0, 0);
+        var cubeRenderer = gameObject.GetComponent<Renderer>();
+        cubeRenderer.material.SetColor("_Color", Color.white);
         //get a random direction and set the ball to that direction at the start of the game
         int rand1 = Random.Range(-100, 100);
         int rand2 = Random.Range(-100, 100);
