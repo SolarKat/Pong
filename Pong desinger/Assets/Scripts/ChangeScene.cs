@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
-    public string NextScene = "MainLevel";
+    public string scene = "test";
     public void changeScene()
     {
-        SceneManager.LoadScene(NextScene);
+        SceneManager.LoadScene(scene);
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-
     }
     // Update is called once per frame
     void Update()

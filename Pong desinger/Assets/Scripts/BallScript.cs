@@ -8,8 +8,12 @@ public class BallScript : MonoBehaviour
     public Rigidbody2D rb;
     public int speed = 5;
     Vector2 direction = new Vector2(1,1);
-    public ChangeScene sceneChange;
+    public ChangeScene sceneChange1;
+    public ChangeScene sceneChange2;
     public ShakeScreen shake;
+    public AudioClip wallHit;
+    public AudioClip goalHit;
+    public AudioClip paddleHit;
     public GameObject goal1;
     public GameObject goal2;
     int score1;
@@ -47,8 +51,14 @@ public class BallScript : MonoBehaviour
     {
         if(score1 == scoreToWin || score2 == scoreToWin)
         {
-            resetScores();
-            sceneChange.changeScene();
+            if (score1 == scoreToWin)
+            {
+                sceneChange1.changeScene();
+            }
+            else if (score2 == scoreToWin)
+            {
+                sceneChange2.changeScene();
+            }
         }
         reset = true;
         rb.velocity = new Vector2(0, 0);
