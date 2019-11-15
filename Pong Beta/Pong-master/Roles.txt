@@ -1,0 +1,15 @@
+Roles:
+
+Adeline:
+Director
+Tech Lead
+
+Nick:
+Producer
+Sound Lead
+
+Ethan:
+Design Lead
+
+Mini:
+Art Lead
