@@ -1,0 +1,9 @@
+Paddle sprite 
+Wall sprite 
+Level Background sprite 
+Menu Backgrounds 
+Ball sprite 
+9 Tile Sliced Button sprite 
+Logo 
+HUD Art (optional) 
+Possible special effects (like particles) 
